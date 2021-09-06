@@ -16,11 +16,10 @@ public class EmployeeControllerTest {
     @Test
     public void listEmployee() {
         //Act
-        EmployeeResponse[] responses = restTemplate.getForObject("/employees", EmployeeResponse[].class);
-
+        EmployeeResponse[] result = restTemplate.getForObject("/employees", EmployeeResponse[].class);
         //Assert
-        assertEquals(2, responses.length);
-        assertEquals(1, responses[0].getId());
-        assertEquals("Garun", responses[0].getName());
+        assertEquals(2, result.length);
+        assertEquals(1, result[0].getId());
+        assertEquals("Garun", result[0].getName());
     }
 }
