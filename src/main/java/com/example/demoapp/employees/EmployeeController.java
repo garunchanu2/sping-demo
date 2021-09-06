@@ -1,5 +1,7 @@
 package com.example.demoapp.employees;
 
+import com.example.demoapp.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,14 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @GetMapping("/employees/{id}")
     public EmployeeResponse getEmployeeById(@PathVariable String id) {
         // Validate Input
         // Cleaning date
-        EmployeeResponse employeeResponse01 = new EmployeeResponse();
-        employeeResponse01.setId(Integer.parseInt(id));
-        employeeResponse01.setName("Garun");
-        return employeeResponse01;
+        EmployeeResponse response = employeeService.getById(Integer.parseInt(id));
+        return response;
     }
 
     @GetMapping("/employees")
