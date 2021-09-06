@@ -8,6 +8,12 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public EmployeeResponse[] listEmployee() {
-        return new EmployeeResponse[]{new EmployeeResponse()};
+        EmployeeResponse employeeResponse01 = new EmployeeResponse();
+        employeeResponse01.setId(1);
+        employeeResponse01.setName("Garun");
+        EmployeeResponse employeeResponse02 = new EmployeeResponse();
+        employeeResponse02.setId(2);
+        employeeResponse02.setName("TestName");
+        return new EmployeeResponse[]{employeeResponse01, employeeResponse02};
     }
 }
