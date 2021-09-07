@@ -13,6 +13,24 @@ public class EmployeeControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Test
+    public void getEmployeeById() {
+        // Arrange
+        int id = 1;
+        Employee employee100 = new Employee();
+        employee100.setName("Garun");
+        employeeRepository.save(employee100);
+        // Act
+        EmployeeResponse result
+                = restTemplate.getForObject("/employees/" + id, EmployeeResponse.class);
+        // Assert
+        assertEquals(id, result.getId());
+        assertEquals("Garun", result.getName());
+    }
+
     @Test
     public void listEmployee() {
         //Act
