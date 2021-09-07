@@ -32,4 +32,16 @@ public class EmployeeRepositoryTest {
         assertEquals(1, result.get().getId());
         assertEquals("Mock name", result.get().getName());
     }
+
+    @Test
+    @DisplayName("ค้นหาข้อมูล ID = 1 ไม่เจอ")
+    public void case02() {
+        //Arrange
+        Employee employee1 = new Employee();
+        employee1.setName("Mock name");
+        //Act
+        Optional<Employee> result = employeeRepository.findById(1);
+        //Assert
+        assertFalse(result.isPresent());
+    }
 }
