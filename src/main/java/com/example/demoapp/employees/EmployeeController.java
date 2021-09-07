@@ -16,6 +16,7 @@ public class EmployeeController {
     public EmployeeResponse getEmployeeById(@PathVariable String id) {
         // Validate Input
         // Cleaning date
+        //Success
         EmployeeResponse response = employeeService.getById(Integer.parseInt(id));
         return response;
     }
